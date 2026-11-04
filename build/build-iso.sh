@@ -26,6 +26,7 @@ lb config \
     --mirror-bootstrap https://deb.debian.org/debian \
     --mirror-chroot https://deb.debian.org/debian \
     --mirror-binary https://deb.debian.org/debian \
+    --initsystem systemd \
     --security false \
     --binary-images iso-hybrid \
     --bootloader grub
