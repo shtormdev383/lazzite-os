@@ -1,5 +1,5 @@
 
-name: Build LAZZITE OS
+name: LAZZITE Debian 12 Build
 
 on:
   workflow_dispatch:
@@ -7,21 +7,26 @@ on:
 jobs:
   build:
     runs-on: ubuntu-22.04
+    container:
+      image: debian:bookworm
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Prepare environment
+      - name: Install build tools
         run: |
-          sudo apt-get update
-          sudo apt-get install -y \
+          apt-get update
+          apt-get install -y \
             live-build \
             debootstrap \
             debian-archive-keyring \
-            ca-certificates
+            ca-certificates \
+            xorriso \
+            grub-pc-bin \
+            grub-efi-amd64-bin
 
-      - name: Configure Debian Live
+      - name: Configure LAZZITE
         run: |
           mkdir -p config
 
@@ -33,28 +38,25 @@ jobs:
             --mirror-bootstrap https://deb.debian.org/debian \
             --mirror-chroot https://deb.debian.org/debian \
             --mirror-binary https://deb.debian.org/debian \
-            --debootstrap-options "--keyring=/usr/share/keyrings/debian-archive-keyring.gpg" \
             --binary-images iso-hybrid \
             --bootloader grub \
             --debian-installer live
 
-      - name: Verify Debian configuration
+      - name: Verify configuration
         run: |
-          echo "Checking generated configuration..."
+          echo "Checking Debian configuration..."
           cat config/bootstrap
-          if grep -R "archive.ubuntu.com" config; then
-            echo "ERROR: Ubuntu mirror detected!"
-            exit 1
-          fi
+          cat config/archives
+          grep -R "archive.ubuntu.com" config && exit 1 || true
 
       - name: Build ISO
         run: |
-          sudo lb build
+          lb build
 
       - name: Upload ISO
         uses: actions/upload-artifact@v4
         with:
-          name: lazzite-iso
+          name: LAZZITE-ISO
           path: "*.iso"
           if-no-files-found: error
           retention-days: 7
