@@ -1,6 +1,9 @@
 name: LAZZITE Debian 13 Build
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:

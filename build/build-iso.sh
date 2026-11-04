@@ -29,6 +29,27 @@ lb config \
     --binary-images iso-hybrid \
     --bootloader grub
 
+verify_config_contains() {
+    local expected="$1"
+
+    if grep -R -F -q -- "$expected" config; then
+        return 0
+    else
+        grep_status=$?
+    fi
+
+    if [ "$grep_status" -eq 1 ]; then
+        printf 'Error: generated live-build configuration is missing "%s".\n' "$expected" >&2
+        exit 1
+    fi
+
+    printf 'Error: unable to inspect generated live-build configuration (grep exited %s).\n' "$grep_status" >&2
+    exit "$grep_status"
+}
+
+verify_config_contains 'trixie'
+verify_config_contains 'https://deb.debian.org/debian'
+
 if grep -R -n -- 'archive.ubuntu.com' config; then
     printf '%s\n' "Error: generated live-build configuration contains an Ubuntu archive." >&2
     exit 1

@@ -27,9 +27,9 @@ sudo bash build/build-iso.sh
 The script configures and builds from `build/`, checks that generated
 configuration does not use Ubuntu archives, and copies the resulting image to
 `dist/LAZZITE-13-amd64.iso`. GitHub Actions runs the same script on an
-`ubuntu-24.04` runner and installs the build dependencies when manually
-dispatched. Generated build output and ISO files are excluded from version
-control.
+`ubuntu-24.04` runner and installs the build dependencies on pushes to `main`
+or when manually dispatched. Generated build output and ISO files are
+excluded from version control.
 
 An ISO is considered verified only after the build succeeds and the image has
 been boot-tested; no such verification is claimed by this initial setup.
