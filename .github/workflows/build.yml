@@ -34,6 +34,36 @@ jobs:
             grub-pc-bin \
             grub-efi-amd64-bin
 
+      - name: Patch live-build Contents index URLs
+        run: |
+          sudo dpkg-query -W -f='live-build=${Version}\n' live-build
+          sudo python3 - <<'PY'
+          from pathlib import Path
+
+          script = Path("/usr/lib/live/build/lb_chroot_linux-image")
+          contents = script.read_text()
+          replacements = {
+              "${LB_PARENT_MIRROR_CHROOT}/dists/${LB_PARENT_DISTRIBUTION}/Contents-${LB_ARCHITECTURES}.gz":
+                  "${LB_PARENT_MIRROR_CHROOT}/dists/${LB_PARENT_DISTRIBUTION}/main/Contents-${LB_ARCHITECTURES}.gz",
+              "${LB_MIRROR_CHROOT}/dists/${LB_DISTRIBUTION}/Contents-${LB_ARCHITECTURES}.gz":
+                  "${LB_MIRROR_CHROOT}/dists/${LB_DISTRIBUTION}/main/Contents-${LB_ARCHITECTURES}.gz",
+          }
+
+          for old, new in replacements.items():
+              count = contents.count(old)
+              if count != 1:
+                  raise SystemExit(
+                      f"Expected exactly one occurrence of {old!r} in {script}, found {count}"
+                  )
+              contents = contents.replace(old, new, 1)
+
+          if any(old in contents for old in replacements):
+              raise SystemExit(f"Unpatched Contents URL remains in {script}")
+
+          script.write_text(contents)
+          print(f"Patched both Contents URLs in {script}")
+          PY
+
       - name: Build LAZZITE
         run: sudo bash build/build-iso.sh
 
