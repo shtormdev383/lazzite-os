@@ -29,7 +29,7 @@ lb config \
     --initsystem systemd \
     --security false \
     --binary-image iso-hybrid \
-    --bootloaders grub-pc
+    --bootloaders "grub-pc grub-efi"
 
 verify_config_contains() {
     local expected="$1"
