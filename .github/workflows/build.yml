@@ -31,6 +31,7 @@ jobs:
             mtools \
             rsync \
             cpio \
+            syslinux-utils \
             grub-pc-bin \
             grub-efi-amd64-bin
 
@@ -63,6 +64,14 @@ jobs:
           script.write_text(contents)
           print(f"Patched both Contents URLs in {script}")
           PY
+
+      - name: Verify isohybrid
+        run: |
+          if ! command -v isohybrid; then
+            echo "::error::isohybrid is unavailable; syslinux-utils must be installed on the build runner."
+            exit 1
+          fi
+          isohybrid --version
 
       - name: Build LAZZITE
         run: sudo bash build/build-iso.sh
