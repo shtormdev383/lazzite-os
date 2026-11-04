@@ -15,9 +15,13 @@ jobs:
       - name: Prepare environment
         run: |
           sudo apt-get update
-          sudo apt-get install -y live-build debootstrap debian-archive-keyring
+          sudo apt-get install -y \
+            live-build \
+            debootstrap \
+            debian-archive-keyring \
+            ca-certificates
 
-      - name: Build ISO
+      - name: Configure Debian Live
         run: |
           mkdir -p config
 
@@ -29,10 +33,22 @@ jobs:
             --mirror-bootstrap https://deb.debian.org/debian \
             --mirror-chroot https://deb.debian.org/debian \
             --mirror-binary https://deb.debian.org/debian \
+            --debootstrap-options "--keyring=/usr/share/keyrings/debian-archive-keyring.gpg" \
             --binary-images iso-hybrid \
             --bootloader grub \
             --debian-installer live
 
+      - name: Verify Debian configuration
+        run: |
+          echo "Checking generated configuration..."
+          cat config/bootstrap
+          if grep -R "archive.ubuntu.com" config; then
+            echo "ERROR: Ubuntu mirror detected!"
+            exit 1
+          fi
+
+      - name: Build ISO
+        run: |
           sudo lb build
 
       - name: Upload ISO
