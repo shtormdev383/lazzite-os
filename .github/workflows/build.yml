@@ -10,6 +10,9 @@ jobs:
   build:
     runs-on: ubuntu-24.04
 
+    container:
+      image: debian:trixie
+
     permissions:
       contents: read
 
@@ -19,62 +22,38 @@ jobs:
 
       - name: Install build tools
         run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            bash \
             live-build \
             debootstrap \
             debian-archive-keyring \
             ca-certificates \
-            xorriso \
-            squashfs-tools \
-            dosfstools \
-            mtools \
-            rsync \
             cpio \
-            syslinux-utils \
+            grub-common \
             grub-pc-bin \
-            grub-efi-amd64-bin
+            isolinux \
+            rsync \
+            squashfs-tools \
+            xorriso
 
-      - name: Patch live-build Contents index URLs
+      - name: Verify Debian Trixie build environment
         run: |
-          sudo dpkg-query -W -f='live-build=${Version}\n' live-build
-          sudo python3 - <<'PY'
-          from pathlib import Path
-
-          script = Path("/usr/lib/live/build/lb_chroot_linux-image")
-          contents = script.read_text()
-          replacements = {
-              "${LB_PARENT_MIRROR_CHROOT}/dists/${LB_PARENT_DISTRIBUTION}/Contents-${LB_ARCHITECTURES}.gz":
-                  "${LB_PARENT_MIRROR_CHROOT}/dists/${LB_PARENT_DISTRIBUTION}/main/Contents-${LB_ARCHITECTURES}.gz",
-              "${LB_MIRROR_CHROOT}/dists/${LB_DISTRIBUTION}/Contents-${LB_ARCHITECTURES}.gz":
-                  "${LB_MIRROR_CHROOT}/dists/${LB_DISTRIBUTION}/main/Contents-${LB_ARCHITECTURES}.gz",
-          }
-
-          for old, new in replacements.items():
-              count = contents.count(old)
-              if count != 1:
-                  raise SystemExit(
-                      f"Expected exactly one occurrence of {old!r} in {script}, found {count}"
-                  )
-              contents = contents.replace(old, new, 1)
-
-          if any(old in contents for old in replacements):
-              raise SystemExit(f"Unpatched Contents URL remains in {script}")
-
-          script.write_text(contents)
-          print(f"Patched both Contents URLs in {script}")
-          PY
-
-      - name: Verify isohybrid
-        run: |
-          if ! command -v isohybrid; then
-            echo "::error::isohybrid is unavailable; syslinux-utils must be installed on the build runner."
+          . /etc/os-release
+          if [ "$VERSION_CODENAME" != "trixie" ]; then
+            echo "::error::Expected Debian Trixie build container, got ${PRETTY_NAME}."
             exit 1
           fi
-          isohybrid --version
+          dpkg-query -W -f='live-build=${Version}\n' live-build
+          for tool in lb debootstrap xorriso grub-mkimage mksquashfs; do
+            if ! command -v "$tool" >/dev/null 2>&1; then
+              echo "::error::Required build tool is missing: $tool"
+              exit 1
+            fi
+          done
 
       - name: Build LAZZITE
-        run: sudo bash build/build-iso.sh
+        run: bash build/build-iso.sh
 
       - name: Upload ISO
         uses: actions/upload-artifact@v4

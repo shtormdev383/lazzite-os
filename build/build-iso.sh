@@ -28,8 +28,8 @@ lb config \
     --mirror-binary https://deb.debian.org/debian \
     --initsystem systemd \
     --security false \
-    --binary-images iso-hybrid \
-    --bootloader grub2
+    --binary-image iso-hybrid \
+    --bootloaders grub-pc
 
 verify_config_contains() {
     local expected="$1"
