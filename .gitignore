@@ -1,0 +1,12 @@
+/build/binary/
+/build/cache/
+/build/chroot/
+/build/config/binary
+/build/config/archives/
+/build/config/bootstrap
+/build/config/chroot
+/build/config/common
+/build/config/source
+/build/live-image-amd64.hybrid.iso
+/build/*.log
+/dist/*.iso

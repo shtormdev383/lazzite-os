@@ -1,14 +1,14 @@
-
-name: LAZZITE Debian 12 Build
+name: LAZZITE Debian 13 Build
 
 on:
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
-    container:
-      image: debian:bookworm
+    runs-on: ubuntu-24.04
+
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout
@@ -16,47 +16,28 @@ jobs:
 
       - name: Install build tools
         run: |
-          apt-get update
-          apt-get install -y \
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
             live-build \
             debootstrap \
             debian-archive-keyring \
             ca-certificates \
             xorriso \
+            squashfs-tools \
+            dosfstools \
+            mtools \
+            rsync \
+            cpio \
             grub-pc-bin \
             grub-efi-amd64-bin
 
-      - name: Configure LAZZITE
-        run: |
-          mkdir -p config
-
-          lb config \
-            --mode debian \
-            --distribution bookworm \
-            --architectures amd64 \
-            --archive-areas "main contrib non-free non-free-firmware" \
-            --mirror-bootstrap https://deb.debian.org/debian \
-            --mirror-chroot https://deb.debian.org/debian \
-            --mirror-binary https://deb.debian.org/debian \
-            --binary-images iso-hybrid \
-            --bootloader grub \
-            --debian-installer live
-
-      - name: Verify configuration
-        run: |
-          echo "Checking Debian configuration..."
-          cat config/bootstrap
-          cat config/archives
-          grep -R "archive.ubuntu.com" config && exit 1 || true
-
-      - name: Build ISO
-        run: |
-          lb build
+      - name: Build LAZZITE
+        run: sudo bash build/build-iso.sh
 
       - name: Upload ISO
         uses: actions/upload-artifact@v4
         with:
-          name: LAZZITE-ISO
-          path: "*.iso"
+          name: LAZZITE-13-amd64
+          path: dist/LAZZITE-13-amd64.iso
           if-no-files-found: error
           retention-days: 7

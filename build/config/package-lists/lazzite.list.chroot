@@ -1,0 +1,15 @@
+# Live system essentials
+live-boot
+live-config
+live-config-systemd
+
+# Minimal KDE Plasma desktop and basic connectivity
+kde-plasma-desktop
+sddm
+network-manager
+plasma-nm
+dolphin
+konsole
+
+# Firmware for broader hardware compatibility
+firmware-linux
