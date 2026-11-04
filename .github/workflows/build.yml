@@ -1,0 +1,35 @@
+name: Build LAZZITE OS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y live-build debootstrap
+
+      - name: Build ISO
+        run: |
+          mkdir -p config
+          lb config \
+            --distribution bookworm \
+            --archive-areas "main contrib non-free non-free-firmware" \
+            --binary-images iso-hybrid \
+            --bootloader grub \
+            --debian-installer live
+          sudo lb build
+
+      - name: Upload ISO
+        uses: actions/upload-artifact@v4
+        with:
+          name: lazzite-iso
+          path: "*.iso"
+          if-no-files-found: error
+          retention-days: 7
