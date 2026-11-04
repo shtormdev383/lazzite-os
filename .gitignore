@@ -2,7 +2,9 @@
 /build/cache/
 /build/chroot/
 /build/config/binary
-/build/config/archives/
+/build/config/archives/*
+!/build/config/archives/lazzite-security.list.binary
+!/build/config/archives/lazzite-security.list.chroot
 /build/config/bootstrap
 /build/config/chroot
 /build/config/common

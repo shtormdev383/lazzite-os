@@ -26,6 +26,7 @@ lb config \
     --mirror-bootstrap https://deb.debian.org/debian \
     --mirror-chroot https://deb.debian.org/debian \
     --mirror-binary https://deb.debian.org/debian \
+    --security false \
     --binary-images iso-hybrid \
     --bootloader grub
 
@@ -49,17 +50,26 @@ verify_config_contains() {
 
 verify_config_contains 'trixie'
 verify_config_contains 'https://deb.debian.org/debian'
+verify_config_contains 'https://security.debian.org/debian-security trixie-security main'
 
-if grep -R -n -- 'archive.ubuntu.com' config; then
-    printf '%s\n' "Error: generated live-build configuration contains an Ubuntu archive." >&2
-    exit 1
-else
-    grep_status=$?
+verify_config_does_not_contain() {
+    local unexpected="$1"
+
+    if grep -R -F -n -- "$unexpected" config; then
+        printf 'Error: generated live-build configuration contains unexpected entry "%s".\n' "$unexpected" >&2
+        exit 1
+    else
+        grep_status=$?
+    fi
+
     if [ "$grep_status" -ne 1 ]; then
-        printf 'Error: unable to inspect generated configuration (grep exited %s).\n' "$grep_status" >&2
+        printf 'Error: unable to inspect generated live-build configuration (grep exited %s).\n' "$grep_status" >&2
         exit "$grep_status"
     fi
-fi
+}
+
+verify_config_does_not_contain 'archive.ubuntu.com'
+verify_config_does_not_contain 'trixie/updates'
 
 lb build
 
