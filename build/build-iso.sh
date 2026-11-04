@@ -29,7 +29,7 @@ lb config \
     --initsystem systemd \
     --security false \
     --binary-images iso-hybrid \
-    --bootloader grub
+    --bootloader grub2
 
 verify_config_contains() {
     local expected="$1"
