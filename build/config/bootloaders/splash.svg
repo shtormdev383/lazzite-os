@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#080c18"/>
+      <stop offset="0.55" stop-color="#111b30"/>
+      <stop offset="1" stop-color="#101326"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#65f0d2"/>
+      <stop offset="1" stop-color="#8c79ff"/>
+    </linearGradient>
+    <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5de8d0" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#5de8d0" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#8b78ff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#background)"/>
+  <path d="M470 0h330L496 600H166z" fill="#27315a" opacity="0.22"/>
+  <path d="M670 0h130L548 600H418z" fill="url(#ribbon)" opacity="0.8"/>
+  <path d="M0 510c180-125 326-118 514-34s222 91 286 75v49H0z" fill="#070a14" opacity="0.38"/>
+  <circle cx="628" cy="170" r="152" fill="#685cf4" opacity="0.08"/>
+  <circle cx="628" cy="170" r="112" fill="none" stroke="#8c88ff" stroke-opacity="0.18"/>
+
+  <g transform="translate(64 113)">
+    <path d="M0 0h92v25H26v89h66v25H0z" fill="url(#accent)"/>
+    <path d="M38 52h54v25H38z" fill="#65f0d2" opacity="0.72"/>
+    <text x="122" y="71" fill="#f3f5ff" font-family="DejaVu Sans, sans-serif" font-size="54" font-weight="700" letter-spacing="3">LAZZITE</text>
+    <text x="124" y="109" fill="#a9b5d1" font-family="DejaVu Sans, sans-serif" font-size="17" letter-spacing="4">FAST. CLEAN. YOURS.</text>
+  </g>
+
+  <g transform="translate(66 332)">
+    <rect width="104" height="30" rx="15" fill="#182644" stroke="#4fe0ca" stroke-opacity="0.7"/>
+    <circle cx="17" cy="15" r="4" fill="#61ead1"/>
+    <text x="31" y="20" fill="#c7d4ee" font-family="DejaVu Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="2">BETA 01</text>
+    <text x="0" y="63" fill="#8f9dbb" font-family="DejaVu Sans, sans-serif" font-size="13" letter-spacing="2">DEBIAN 13  /  AMD64</text>
+  </g>
+
+  <path d="M64 500h174" stroke="url(#accent)" stroke-width="2" opacity="0.7"/>
+  <text x="64" y="528" fill="#7584a4" font-family="DejaVu Sans, sans-serif" font-size="12" letter-spacing="1.5">A community-built Linux desktop</text>
+</svg>

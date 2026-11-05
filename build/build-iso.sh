@@ -28,6 +28,9 @@ lb config \
     --mirror-binary https://deb.debian.org/debian \
     --initsystem systemd \
     --security false \
+    --iso-application "LAZZITE OS" \
+    --iso-publisher "LAZZITE OS Project" \
+    --iso-volume LAZZITE_13 \
     --binary-image iso-hybrid \
     --bootloaders "grub-pc grub-efi"
 
@@ -52,6 +55,10 @@ verify_config_contains() {
 verify_config_contains 'trixie'
 verify_config_contains 'https://deb.debian.org/debian'
 verify_config_contains 'https://security.debian.org/debian-security trixie-security main'
+verify_config_contains 'LAZZITE OS'
+verify_config_contains 'LAZZITE_13'
+verify_config_contains 'grub-pc'
+verify_config_contains 'grub-efi'
 
 verify_config_does_not_contain() {
     local unexpected="$1"

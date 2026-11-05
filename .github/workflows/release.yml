@@ -1,0 +1,125 @@
+name: Prepare LAZZITE Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_run_id:
+        description: Successful Build LAZZITE run ID from main
+        required: true
+        type: string
+      version:
+        description: Beta tag (for example v0.1.0-beta.1)
+        required: true
+        type: string
+      boot_tested:
+        description: Confirm this exact ISO was boot-tested on real hardware
+        required: true
+        type: boolean
+        default: false
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    concurrency:
+      group: prepare-release-${{ inputs.version }}
+      cancel-in-progress: false
+    permissions:
+      actions: read
+      contents: write
+
+    steps:
+      - name: Checkout release scripts
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: Validate release request and source build
+        id: source
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BUILD_RUN_ID: ${{ inputs.build_run_id }}
+          RELEASE_VERSION: ${{ inputs.version }}
+          BOOT_TESTED: ${{ inputs.boot_tested }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$BUILD_RUN_ID" =~ ^[0-9]+$ ]]; then
+            echo "::error::Build run ID must be numeric."
+            exit 1
+          fi
+          if [[ ! "$RELEASE_VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+-beta\.[0-9]+$ ]]; then
+            echo "::error::Version must look like v0.1.0-beta.1."
+            exit 1
+          fi
+          if [ "$BOOT_TESTED" != "true" ]; then
+            echo "::error::A release requires explicit confirmation that this ISO was boot-tested on real hardware."
+            exit 1
+          fi
+
+          expected_workflow_id="$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/build.yml" --jq '.id')"
+          run_json="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$BUILD_RUN_ID")"
+          echo "$run_json" | jq -e \
+            --arg repo "$GITHUB_REPOSITORY" \
+            --argjson workflow_id "$expected_workflow_id" \
+            '(.status == "completed") and
+             (.conclusion == "success") and
+             (.head_branch == "main") and
+             (.head_repository.full_name == $repo) and
+             (.workflow_id == $workflow_id) and
+             ((.event == "push") or (.event == "workflow_dispatch"))' >/dev/null
+
+          build_sha="$(echo "$run_json" | jq -r '.head_sha')"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$BUILD_RUN_ID/artifacts" \
+            --jq '[.artifacts[] | select(.name == "LAZZITE-13-amd64" and .expired == false)] | length' |
+            grep -Fxq '1'
+
+          if gh release view "$RELEASE_VERSION" >/dev/null 2>&1; then
+            echo "::error::Release $RELEASE_VERSION already exists."
+            exit 1
+          fi
+          if gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$RELEASE_VERSION" >/dev/null 2>&1; then
+            echo "::error::Git tag $RELEASE_VERSION already exists."
+            exit 1
+          fi
+          echo "head_sha=$build_sha" >> "$GITHUB_OUTPUT"
+
+      - name: Download ISO from validated build
+        uses: actions/download-artifact@v4
+        with:
+          name: LAZZITE-13-amd64
+          path: incoming
+          run-id: ${{ inputs.build_run_id }}
+          github-token: ${{ github.token }}
+
+      - name: Verify checksum and split ISO
+        run: |
+          set -euo pipefail
+          cd incoming
+          sha256sum --check LAZZITE-13-amd64.iso.sha256
+          cd ..
+          bash scripts/split-iso.sh \
+            incoming/LAZZITE-13-amd64.iso \
+            release-assets
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_VERSION: ${{ inputs.version }}
+          BUILD_RUN_ID: ${{ inputs.build_run_id }}
+          BUILD_SHA: ${{ steps.source.outputs.head_sha }}
+        run: |
+          set -euo pipefail
+          parts=(release-assets/LAZZITE-13-amd64.iso.[0-9][0-9][0-9])
+          if [ "${#parts[@]}" -lt 1 ] || [ ! -f "${parts[0]}" ]; then
+            echo "::error::No split ISO parts were produced."
+            exit 1
+          fi
+          gh release create "$RELEASE_VERSION" \
+            "${parts[@]}" \
+            release-assets/LAZZITE-13-amd64.iso.parts \
+            release-assets/LAZZITE-13-amd64.iso.sha256 \
+            --target "$BUILD_SHA" \
+            --prerelease \
+            --title "LAZZITE OS $RELEASE_VERSION" \
+            --notes "Debian 13 Trixie AMD64 hybrid live ISO. The attached parts were checksum-verified and split from successful build run $BUILD_RUN_ID. Restore with the included manifest and checksum file after verifying this image was boot-tested."

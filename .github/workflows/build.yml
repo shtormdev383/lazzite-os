@@ -56,10 +56,17 @@ jobs:
       - name: Build LAZZITE
         run: bash build/build-iso.sh
 
+      - name: Create ISO checksum
+        run: |
+          cd dist
+          sha256sum LAZZITE-13-amd64.iso > LAZZITE-13-amd64.iso.sha256
+
       - name: Upload ISO
         uses: actions/upload-artifact@v4
         with:
           name: LAZZITE-13-amd64
-          path: dist/LAZZITE-13-amd64.iso
+          path: |
+            dist/LAZZITE-13-amd64.iso
+            dist/LAZZITE-13-amd64.iso.sha256
           if-no-files-found: error
           retention-days: 7
