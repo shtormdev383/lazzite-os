@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Install LAZZITE
+GenericName=System Installer
+Comment=Install LAZZITE OS on this computer
+Exec=calamares-install-debian
+TryExec=calamares-install-debian
+Icon=lazzite-installer
+Terminal=false
+Categories=System;
+Keywords=install;system;LAZZITE;
+StartupNotify=true

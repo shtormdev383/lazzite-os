@@ -1,0 +1,9 @@
+{
+  "KPlugin": {
+    "Id": "LAZZITE-Minimal",
+    "Name": "LAZZITE Minimal",
+    "Description": "LAZZITE minimal dark wallpaper",
+    "License": "CC-BY-SA-4.0",
+    "Authors": [{"Name": "LAZZITE OS Project"}]
+  }
+}

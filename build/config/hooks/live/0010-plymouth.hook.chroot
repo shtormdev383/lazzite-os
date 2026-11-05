@@ -1,0 +1,15 @@
+#!/bin/bash
+set -euo pipefail
+
+# ── LAZZITE: Activate Plymouth theme ─────────────────────────────────────────
+
+update-alternatives --install /usr/share/plymouth/themes/default.plymouth \
+    default.plymouth \
+    /usr/share/plymouth/themes/lazzite/lazzite.plymouth 100
+
+update-alternatives --set default.plymouth \
+    /usr/share/plymouth/themes/lazzite/lazzite.plymouth
+
+update-initramfs -u -k all
+
+echo "LAZZITE: Plymouth theme activated."

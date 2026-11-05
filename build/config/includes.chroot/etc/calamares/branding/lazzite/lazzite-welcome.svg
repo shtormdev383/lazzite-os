@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#080c18"/>
+      <stop offset="1" stop-color="#101a30"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#57dcb7"/>
+      <stop offset="1" stop-color="#9b86ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" fill="url(#background)"/>
+  <circle cx="760" cy="140" r="220" fill="#57dcb7" opacity=".06"/>
+  <path d="M0 430 960 210v330H0z" fill="#57dcb7" opacity=".035"/>
+  <g transform="translate(92 145)">
+    <path d="M0 0h46v150h154v46H0z" fill="url(#accent)"/>
+    <text x="238" y="115" fill="#e5e9f0" font-family="sans-serif" font-size="78" font-weight="700" letter-spacing="3">LAZZITE</text>
+    <text x="242" y="162" fill="#a9b5d1" font-family="sans-serif" font-size="24" letter-spacing="5">FAST. CLEAN. YOURS.</text>
+  </g>
+  <text x="94" y="424" fill="#a9b5d1" font-family="sans-serif" font-size="20">Choose your language, configure your disk, and install LAZZITE OS.</text>
+  <text x="94" y="464" fill="#57dcb7" font-family="sans-serif" font-size="16" letter-spacing="2">DEBIAN 13 TRIXIE  /  AMD64</text>
+</svg>

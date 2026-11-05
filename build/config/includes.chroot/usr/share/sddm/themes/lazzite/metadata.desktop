@@ -1,0 +1,12 @@
+[SddmGreeterTheme]
+Name=LAZZITE
+Description=LAZZITE OS login screen
+Author=LAZZITE OS Project
+License=CC-BY-SA-4.0
+Type=sddm-theme
+Version=1.0
+Website=
+Screenshot=background.svg
+MainScript=Main.qml
+TranslationsDirectory=translations
+ConfigFile=theme.conf

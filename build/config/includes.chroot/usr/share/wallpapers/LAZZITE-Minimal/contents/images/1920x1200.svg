@@ -1,0 +1,14 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1200" viewBox="0 0 1920 1200">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#101a30"/>
+      <stop offset="100%" stop-color="#080c18"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1200" fill="url(#bg)"/>
+  <g transform="translate(914,471) scale(1)">
+    <path d="M0 0h92v25H26v89h66v25H0z M38 52h54v25H38z" fill="#57dcb7"/>
+  </g>
+  <text x="960" y="645" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="48" font-weight="bold" fill="#e5e9f0" letter-spacing="8">LAZZITE</text>
+  <text x="960" y="677" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="18" fill="#a9b5d1" letter-spacing="3">FAST. CLEAN. YOURS.</text>
+</svg>

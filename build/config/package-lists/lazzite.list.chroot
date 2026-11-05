@@ -3,13 +3,62 @@ live-boot
 live-config
 live-config-systemd
 
-# Minimal KDE Plasma desktop and basic connectivity
+# KDE Plasma desktop and display manager
 kde-plasma-desktop
 sddm
-network-manager
+plasma-workspace
 plasma-nm
+plasma-pa
+plasma-systemmonitor
+
+# Plasma integration
+kde-config-screenlocker
+bluedevil
+powerdevil
+plasma-disks
+kdegraphics-thumbnailers
+ffmpegthumbs
+kde-config-gtk-style
+
+# File management and core apps
 dolphin
 konsole
+ark
+gwenview
+spectacle
+okular
+kcalc
+firefox-esr
+kate
+vlc
+plasma-discover
+
+# Network
+network-manager
+
+# Fonts (system fonts, clean licenses)
+fonts-dejavu
+fonts-liberation
+fonts-noto-core
 
 # Firmware for broader hardware compatibility
 firmware-linux
+firmware-linux-nonfree
+firmware-misc-nonfree
+
+# Boot splash
+plymouth
+plymouth-themes
+
+# Installer and branded first-run welcome
+calamares-settings-debian
+dosfstools
+sudo
+python3-pyqt6
+
+# System utilities
+htop
+wget
+curl
+git
+nano

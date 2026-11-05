@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=LAZZITE Welcome
+GenericName=Welcome to LAZZITE
+Comment=First steps with LAZZITE OS
+Exec=/usr/bin/python3 /usr/lib/lazzite/welcome.py
+Icon=lazzite
+Terminal=false
+Categories=System;
+StartupNotify=true

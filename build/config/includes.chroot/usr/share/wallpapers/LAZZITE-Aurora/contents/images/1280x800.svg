@@ -1,0 +1,34 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="80%" gradientUnits="userSpaceOnUse" gradientTransform="translate(640,400)">
+      <stop offset="0%" stop-color="#101a30"/>
+      <stop offset="100%" stop-color="#080c18"/>
+    </radialGradient>
+    <radialGradient id="aurora1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#65f0d2" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#65f0d2" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="aurora2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#9b86ff" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#9b86ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#57dcb7" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#57dcb7" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8c79ff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#8c79ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="800" fill="url(#bg)"/>
+  <ellipse cx="960" cy="160" rx="444.6" ry="296.4" fill="url(#aurora1)"/>
+  <ellipse cx="320" cy="600" rx="370.5" ry="259.35" fill="url(#aurora2)"/>
+  <ellipse cx="640" cy="352" rx="148.2" ry="148.2" fill="url(#glow1)"/>
+  <ellipse cx="1024" cy="480" rx="74.1" ry="74.1" fill="url(#glow2)"/>
+  <g transform="translate(605.91,309.76) scale(0.741)">
+    <path d="M0 0h92v25H26v89h66v25H0z M38 52h54v25H38z" fill="#57dcb7"/>
+  </g>
+  <text x="640" y="438.7" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="35.57" font-weight="bold" fill="#e5e9f0" letter-spacing="5.93">LAZZITE</text>
+  <text x="640" y="462.41" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="13.34" fill="#65f0d2" letter-spacing="2.96">FAST. CLEAN. YOURS.</text>
+</svg>

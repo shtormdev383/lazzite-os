@@ -1,0 +1,9 @@
+{
+  "KPlugin": {
+    "Id": "LAZZITE-Grid",
+    "Name": "LAZZITE Grid",
+    "Description": "LAZZITE technical grid dark wallpaper",
+    "License": "CC-BY-SA-4.0",
+    "Authors": [{"Name": "LAZZITE OS Project"}]
+  }
+}

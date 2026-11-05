@@ -1,0 +1,67 @@
+# LAZZITE Plymouth script theme
+# Dark background + LAZZITE text logo + animated progress bar
+
+# ── Colour constants ──────────────────────────────────────────────────────────
+bg_r = 0.031; bg_g = 0.047; bg_b = 0.094;        # #080c18
+accent_r = 0.341; accent_g = 0.863; accent_b = 0.714;  # #57dcb7
+text_r = 0.898; text_g = 0.914; text_b = 0.941;   # #e5e9f0
+muted_r = 0.663; muted_g = 0.710; muted_b = 0.820; # #a9b5d1
+
+# ── Background ────────────────────────────────────────────────────────────────
+Window.SetBackgroundTopColor(bg_r, bg_g, bg_b);
+Window.SetBackgroundBottomColor(bg_r, bg_g, bg_b);
+
+# ── Logo ──────────────────────────────────────────────────────────────────────
+logo_image = Image.Text("LAZZITE", text_r, text_g, text_b);
+logo_sprite = Sprite(logo_image);
+logo_sprite.SetX(Window.GetWidth() / 2 - logo_image.GetWidth() / 2);
+logo_sprite.SetY(Window.GetHeight() / 2 - 60);
+
+# ── Tagline ───────────────────────────────────────────────────────────────────
+tagline_image = Image.Text("FAST. CLEAN. YOURS.", muted_r, muted_g, muted_b);
+tagline_sprite = Sprite(tagline_image);
+tagline_sprite.SetX(Window.GetWidth() / 2 - tagline_image.GetWidth() / 2);
+tagline_sprite.SetY(Window.GetHeight() / 2);
+
+# ── Progress bar constants ────────────────────────────────────────────────────
+progress_bar_width  = 300;
+progress_bar_height = 3;
+progress_bar_x = Window.GetWidth()  / 2 - progress_bar_width / 2;
+progress_bar_y = Window.GetHeight() / 2 + 40;
+
+# Track current bar sprite so we can replace it each frame
+bar_sprite = NULL;
+
+# Background track
+bar_bg_image  = Image(progress_bar_width, progress_bar_height);
+bar_bg_canvas = bar_bg_image.GetCanvas();
+bar_bg_canvas.SetFillColor(0.122, 0.157, 0.235, 0.5);
+bar_bg_canvas.DrawRectangle(0, 0, progress_bar_width, progress_bar_height);
+bar_bg_sprite = Sprite(bar_bg_image);
+bar_bg_sprite.SetX(progress_bar_x);
+bar_bg_sprite.SetY(progress_bar_y);
+bar_bg_sprite.SetZ(1);
+
+# ── Progress callback ─────────────────────────────────────────────────────────
+fun progress_callback(duration, progress) {
+    bar_width = Math.Int(progress_bar_width * progress);
+    if (bar_width < 1) {
+        bar_width = 1;
+    }
+
+    bar_image  = Image(bar_width, progress_bar_height);
+    bar_canvas = bar_image.GetCanvas();
+    bar_canvas.SetFillColor(accent_r, accent_g, accent_b, 1.0);
+    bar_canvas.DrawRectangle(0, 0, bar_width, progress_bar_height);
+
+    if (bar_sprite != NULL) {
+        bar_sprite.SetImage(bar_image);
+    } else {
+        bar_sprite = Sprite(bar_image);
+        bar_sprite.SetX(progress_bar_x);
+        bar_sprite.SetY(progress_bar_y);
+        bar_sprite.SetZ(2);
+    }
+}
+
+Plymouth.SetBootProgressFunction(progress_callback);

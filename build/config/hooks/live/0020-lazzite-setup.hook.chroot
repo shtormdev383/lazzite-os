@@ -1,0 +1,15 @@
+#!/bin/bash
+# LAZZITE OS — Live system final configuration
+# Runs inside chroot during live-build, after package installation
+set -euo pipefail
+
+# --- Fonts: rebuild font cache ---
+fc-cache -f
+
+# --- Set hostname ---
+printf '%s\n' "lazzite" > /etc/hostname
+if ! grep -q "lazzite" /etc/hosts 2>/dev/null; then
+    printf '%s\n' "127.0.1.1    lazzite" >> /etc/hosts
+fi
+
+echo "[LAZZITE] Live system configuration complete."

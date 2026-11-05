@@ -1,0 +1,5 @@
+[Theme]
+name=default
+
+[KDE]
+LookAndFeelPackage=org.kde.breeze.desktop

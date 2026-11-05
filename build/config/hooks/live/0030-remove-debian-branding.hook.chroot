@@ -1,0 +1,11 @@
+#!/bin/bash
+# Remove Debian reference packages if they are present.
+set -euo pipefail
+
+for pkg in debian-reference debian-faq konqueror kwrite; do
+    if dpkg-query -W -f='${db:Status-Status}' "$pkg" 2>/dev/null | grep -Fxq installed; then
+        DEBIAN_FRONTEND=noninteractive apt-get remove --purge -y "$pkg"
+    fi
+done
+
+echo "LAZZITE package cleanup complete."

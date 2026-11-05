@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <!-- Main dark gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080c18;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#0d1525;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#101a30;stop-opacity:1" />
+    </linearGradient>
+    <!-- Aurora cyan glow (right side) -->
+    <radialGradient id="auroraCyan" cx="85%" cy="30%" r="45%">
+      <stop offset="0%" style="stop-color:#57dcb7;stop-opacity:0.12" />
+      <stop offset="60%" style="stop-color:#57dcb7;stop-opacity:0.03" />
+      <stop offset="100%" style="stop-color:#57dcb7;stop-opacity:0" />
+    </radialGradient>
+    <!-- Aurora purple glow -->
+    <radialGradient id="auroraPurple" cx="75%" cy="60%" r="35%">
+      <stop offset="0%" style="stop-color:#9b86ff;stop-opacity:0.10" />
+      <stop offset="70%" style="stop-color:#9b86ff;stop-opacity:0.02" />
+      <stop offset="100%" style="stop-color:#9b86ff;stop-opacity:0" />
+    </radialGradient>
+    <!-- Subtle center glow behind logo -->
+    <radialGradient id="centerGlow" cx="50%" cy="28%" r="20%">
+      <stop offset="0%" style="stop-color:#57dcb7;stop-opacity:0.06" />
+      <stop offset="100%" style="stop-color:#57dcb7;stop-opacity:0" />
+    </radialGradient>
+    <filter id="blur-sm">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+
+  <!-- Background fill -->
+  <rect width="1920" height="1080" fill="url(#bgGrad)" />
+
+  <!-- Aurora effects -->
+  <rect width="1920" height="1080" fill="url(#auroraCyan)" />
+  <rect width="1920" height="1080" fill="url(#auroraPurple)" />
+  <rect width="1920" height="1080" fill="url(#centerGlow)" />
+
+  <!-- Subtle horizontal scan lines for depth (very faint) -->
+  <rect width="1920" height="1080" fill="url(#bgGrad)" opacity="0.05"/>
+
+  <!-- LAZZITE logo — top-center area -->
+  <!-- Letter L -->
+  <g transform="translate(820, 180)" fill="#e5e9f0" opacity="0.92">
+    <!-- L -->
+    <rect x="0"   y="0"  width="10" height="60"/>
+    <rect x="0"   y="50" width="30" height="10"/>
+    <!-- A -->
+    <rect x="40"  y="0"  width="10" height="60"/>
+    <rect x="60"  y="0"  width="10" height="60"/>
+    <rect x="40"  y="0"  width="30" height="10"/>
+    <rect x="40"  y="28" width="30" height="8"/>
+    <!-- Z -->
+    <rect x="80"  y="0"  width="30" height="10"/>
+    <rect x="80"  y="50" width="30" height="10"/>
+    <polygon points="80,10 110,10 80,50 110,50 80,50 110,10" fill="#e5e9f0" opacity="0.92"/>
+    <!-- Z2 -->
+    <rect x="120" y="0"  width="30" height="10"/>
+    <rect x="120" y="50" width="30" height="10"/>
+    <polygon points="120,10 150,10 120,50 150,50 120,50 150,10" fill="#e5e9f0" opacity="0.92"/>
+    <!-- I -->
+    <rect x="160" y="0"  width="10" height="60"/>
+    <!-- T -->
+    <rect x="180" y="0"  width="30" height="10"/>
+    <rect x="190" y="0"  width="10" height="60"/>
+    <!-- E -->
+    <rect x="220" y="0"  width="10" height="60"/>
+    <rect x="220" y="0"  width="30" height="10"/>
+    <rect x="220" y="26" width="22" height="8"/>
+    <rect x="220" y="50" width="30" height="10"/>
+  </g>
+
+  <!-- Cyan accent underline below logo -->
+  <rect x="860" y="258" width="200" height="2" fill="#57dcb7" opacity="0.7" rx="1"/>
+
+  <!-- Tagline dots -->
+  <circle cx="955" cy="275" r="1.5" fill="#57dcb7" opacity="0.5"/>
+
+  <!-- Subtle grid/noise overlay for texture -->
+  <rect width="1920" height="1080" fill="none"
+        stroke="#a9b5d1" stroke-width="0.3" stroke-opacity="0.03"
+        style="paint-order: stroke"/>
+</svg>

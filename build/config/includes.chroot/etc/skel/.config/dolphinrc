@@ -1,0 +1,13 @@
+[General]
+EditableUrl=false
+GlobalViewProps=true
+RememberOpenedTabs=true
+ShowFullPath=false
+ShowFullPathInTitlebar=false
+ShowToolTips=true
+UseTabForSwitchingSplitView=false
+Version=200
+
+[MainWindow]
+MenuBar=Disabled
+ToolBarsMovable=Disabled

@@ -1,0 +1,9 @@
+{
+  "KPlugin": {
+    "Id": "LAZZITE-Aurora",
+    "Name": "LAZZITE Aurora",
+    "Description": "LAZZITE aurora dark wallpaper with cyan and purple gradients",
+    "License": "CC-BY-SA-4.0",
+    "Authors": [{"Name": "LAZZITE OS Project"}]
+  }
+}

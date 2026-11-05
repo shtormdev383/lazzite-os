@@ -1,0 +1,21 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800">
+  <defs>
+    <radialGradient id="corner1" cx="0%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#57dcb7" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#57dcb7" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="corner2" cx="100%" cy="100%" r="100%">
+      <stop offset="0%" stop-color="#9b86ff" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#9b86ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="800" fill="#080c18"/>
+  <path d="M30,0 L30,800 M60,0 L60,800 M90,0 L90,800 M120,0 L120,800 M150,0 L150,800 M180,0 L180,800 M210,0 L210,800 M240,0 L240,800 M270,0 L270,800 M300,0 L300,800 M330,0 L330,800 M360,0 L360,800 M390,0 L390,800 M420,0 L420,800 M450,0 L450,800 M480,0 L480,800 M510,0 L510,800 M540,0 L540,800 M570,0 L570,800 M600,0 L600,800 M630,0 L630,800 M660,0 L660,800 M690,0 L690,800 M720,0 L720,800 M750,0 L750,800 M780,0 L780,800 M810,0 L810,800 M840,0 L840,800 M870,0 L870,800 M900,0 L900,800 M930,0 L930,800 M960,0 L960,800 M990,0 L990,800 M1020,0 L1020,800 M1050,0 L1050,800 M1080,0 L1080,800 M1110,0 L1110,800 M1140,0 L1140,800 M1170,0 L1170,800 M1200,0 L1200,800 M1230,0 L1230,800 M1260,0 L1260,800 M0,30 L1280,30 M0,60 L1280,60 M0,90 L1280,90 M0,120 L1280,120 M0,150 L1280,150 M0,180 L1280,180 M0,210 L1280,210 M0,240 L1280,240 M0,270 L1280,270 M0,300 L1280,300 M0,330 L1280,330 M0,360 L1280,360 M0,390 L1280,390 M0,420 L1280,420 M0,450 L1280,450 M0,480 L1280,480 M0,510 L1280,510 M0,540 L1280,540 M0,570 L1280,570 M0,600 L1280,600 M0,630 L1280,630 M0,660 L1280,660 M0,690 L1280,690 M0,720 L1280,720 M0,750 L1280,750 M0,780 L1280,780" stroke="#57dcb7" stroke-opacity="0.05" stroke-width="1" fill="none"/>
+  <ellipse cx="0" cy="0" rx="222.3" ry="222.3" fill="url(#corner1)"/>
+  <ellipse cx="1280" cy="800" rx="148.2" ry="148.2" fill="url(#corner2)"/>
+  <g transform="translate(605.91,309.76) scale(0.741)">
+    <path d="M0 0h92v25H26v89h66v25H0z M38 52h54v25H38z" fill="#57dcb7"/>
+  </g>
+  <text x="640" y="438.7" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="35.57" font-weight="bold" fill="#e5e9f0" letter-spacing="5.93">LAZZITE</text>
+  <text x="640" y="462.41" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="13.34" fill="#57dcb7" letter-spacing="2.96">FAST. CLEAN. YOURS.</text>
+</svg>

@@ -1,0 +1,21 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1366" height="768" viewBox="0 0 1366 768">
+  <defs>
+    <radialGradient id="corner1" cx="0%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#57dcb7" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#57dcb7" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="corner2" cx="100%" cy="100%" r="100%">
+      <stop offset="0%" stop-color="#9b86ff" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#9b86ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1366" height="768" fill="#080c18"/>
+  <path d="M28,0 L28,768 M56,0 L56,768 M84,0 L84,768 M112,0 L112,768 M140,0 L140,768 M168,0 L168,768 M196,0 L196,768 M224,0 L224,768 M252,0 L252,768 M280,0 L280,768 M308,0 L308,768 M336,0 L336,768 M364,0 L364,768 M392,0 L392,768 M420,0 L420,768 M448,0 L448,768 M476,0 L476,768 M504,0 L504,768 M532,0 L532,768 M560,0 L560,768 M588,0 L588,768 M616,0 L616,768 M644,0 L644,768 M672,0 L672,768 M700,0 L700,768 M728,0 L728,768 M756,0 L756,768 M784,0 L784,768 M812,0 L812,768 M840,0 L840,768 M868,0 L868,768 M896,0 L896,768 M924,0 L924,768 M952,0 L952,768 M980,0 L980,768 M1008,0 L1008,768 M1036,0 L1036,768 M1064,0 L1064,768 M1092,0 L1092,768 M1120,0 L1120,768 M1148,0 L1148,768 M1176,0 L1176,768 M1204,0 L1204,768 M1232,0 L1232,768 M1260,0 L1260,768 M1288,0 L1288,768 M1316,0 L1316,768 M1344,0 L1344,768 M0,28 L1366,28 M0,56 L1366,56 M0,84 L1366,84 M0,112 L1366,112 M0,140 L1366,140 M0,168 L1366,168 M0,196 L1366,196 M0,224 L1366,224 M0,252 L1366,252 M0,280 L1366,280 M0,308 L1366,308 M0,336 L1366,336 M0,364 L1366,364 M0,392 L1366,392 M0,420 L1366,420 M0,448 L1366,448 M0,476 L1366,476 M0,504 L1366,504 M0,532 L1366,532 M0,560 L1366,560 M0,588 L1366,588 M0,616 L1366,616 M0,644 L1366,644 M0,672 L1366,672 M0,700 L1366,700 M0,728 L1366,728 M0,756 L1366,756" stroke="#57dcb7" stroke-opacity="0.05" stroke-width="1" fill="none"/>
+  <ellipse cx="0" cy="0" rx="213.3" ry="213.3" fill="url(#corner1)"/>
+  <ellipse cx="1366" cy="768" rx="142.2" ry="142.2" fill="url(#corner2)"/>
+  <g transform="translate(650.29,297.39) scale(0.711)">
+    <path d="M0 0h92v25H26v89h66v25H0z M38 52h54v25H38z" fill="#57dcb7"/>
+  </g>
+  <text x="683" y="421.11" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="34.13" font-weight="bold" fill="#e5e9f0" letter-spacing="5.69">LAZZITE</text>
+  <text x="683" y="443.86" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="12.8" fill="#57dcb7" letter-spacing="2.84">FAST. CLEAN. YOURS.</text>
+</svg>

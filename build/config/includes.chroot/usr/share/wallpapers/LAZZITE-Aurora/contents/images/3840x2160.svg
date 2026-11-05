@@ -1,0 +1,34 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="3840" height="2160" viewBox="0 0 3840 2160">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="80%" gradientUnits="userSpaceOnUse" gradientTransform="translate(1920,1080)">
+      <stop offset="0%" stop-color="#101a30"/>
+      <stop offset="100%" stop-color="#080c18"/>
+    </radialGradient>
+    <radialGradient id="aurora1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#65f0d2" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#65f0d2" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="aurora2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#9b86ff" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#9b86ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#57dcb7" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#57dcb7" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8c79ff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#8c79ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="3840" height="2160" fill="url(#bg)"/>
+  <ellipse cx="2880" cy="432" rx="1200" ry="800" fill="url(#aurora1)"/>
+  <ellipse cx="960" cy="1620" rx="1000" ry="700" fill="url(#aurora2)"/>
+  <ellipse cx="1920" cy="950.4" rx="400" ry="400" fill="url(#glow1)"/>
+  <ellipse cx="3072" cy="1296" rx="200" ry="200" fill="url(#glow2)"/>
+  <g transform="translate(1828,836.4) scale(2)">
+    <path d="M0 0h92v25H26v89h66v25H0z M38 52h54v25H38z" fill="#57dcb7"/>
+  </g>
+  <text x="1920" y="1184.4" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="96" font-weight="bold" fill="#e5e9f0" letter-spacing="16">LAZZITE</text>
+  <text x="1920" y="1248.4" text-anchor="middle" font-family="DejaVu Sans, sans-serif" font-size="36" fill="#65f0d2" letter-spacing="8">FAST. CLEAN. YOURS.</text>
+</svg>

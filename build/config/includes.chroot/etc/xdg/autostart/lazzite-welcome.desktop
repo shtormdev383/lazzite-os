@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=LAZZITE Welcome
+Comment=First steps with LAZZITE OS
+Exec=/usr/bin/python3 /usr/lib/lazzite/welcome.py --first-run
+TryExec=/usr/bin/python3
+Icon=lazzite
+Terminal=false
+OnlyShowIn=KDE;
+X-KDE-autostart-after=panel
+X-KDE-StartupNotify=false

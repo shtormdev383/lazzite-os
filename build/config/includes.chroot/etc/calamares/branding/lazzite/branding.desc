@@ -1,0 +1,35 @@
+---
+componentName: lazzite
+welcomeStyleCalamares: true
+windowExpanding: normal
+windowSize: 900px,640px
+windowPlacement: center
+
+strings:
+    productName: LAZZITE OS
+    shortProductName: LAZZITE
+    version: "13"
+    shortVersion: "13"
+    versionedName: LAZZITE OS 13
+    shortVersionedName: LAZZITE 13
+    bootloaderEntryName: LAZZITE OS
+    productUrl: https://github.com/shtormdev383/lazzite-os
+    supportUrl: https://github.com/shtormdev383/lazzite-os/issues
+    knownIssuesUrl: https://github.com/shtormdev383/lazzite-os/issues
+    releaseNotesUrl: https://github.com/shtormdev383/lazzite-os/releases
+
+sidebar: widget
+navigation: widget
+
+images:
+    productLogo: lazzite-logo.svg
+    productIcon: lazzite-logo.svg
+    productWelcome: lazzite-welcome.svg
+
+style:
+    SidebarBackground: "#080c18"
+    SidebarText: "#a9b5d1"
+    SidebarTextCurrent: "#e5e9f0"
+    SidebarBackgroundCurrent: "#182644"
+
+slideshowAPI: 2

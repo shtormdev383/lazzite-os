@@ -8,18 +8,23 @@ live-build infrastructure rather than maintaining custom system components.
 
 ## Current status
 
-The current build configuration adds LAZZITE boot artwork, a default Plasma
-wallpaper, a dark green-accented color scheme, and branded ISO metadata. These
-changes have not yet been included in a built or boot-tested image. The last
-confirmed ISO is a Debian Live system with KDE Plasma; Debian remains the
-base system and package source.
+The current build configuration adds LAZZITE boot and login artwork, a branded
+Plymouth splash, a first-run welcome app, default Plasma wallpapers, a dark
+green-accented color scheme, and branded ISO metadata. The package list also
+includes Firefox ESR, Kate, VLC, Plasma Discover, and the Debian Calamares
+installer framework/settings.
 
-This is an experimental preview, not an installer or a supported release. It
-does not install LAZZITE to disk. Windows dual-boot behavior and installation
-have not been implemented or tested. The wallpaper default is set through
-the Plasma 6 Breeze Look-and-Feel defaults; users can still change their
-desktop settings. A future upgrade to the Breeze Look-and-Feel package could
-replace this bundled default override.
+Calamares uses Debian Trixie's packaged modules and live-media settings for
+language, keyboard, partitioning, users, filesystem copy, and GRUB setup. The
+LAZZITE configuration requires a confirmation before installation starts.
+This integration has not yet been built into or tested from an ISO; automatic
+and manual partitioning, UEFI/BIOS installation, Secure Boot, Windows
+dual-boot behavior, and post-install boot remain unverified. Do not use it to
+install on a computer until these tests pass.
+
+The wallpaper default is set through the Plasma 6 Breeze Look-and-Feel
+defaults; users can still change their desktop settings. A future upgrade to
+the Breeze Look-and-Feel package could replace this bundled default override.
 
 ## Build
 
@@ -54,8 +59,9 @@ installer workflow.
 - Use Debian's `kde-plasma-desktop` rather than a full desktop task, with only
   a small set of basic desktop applications.
 - Include Debian firmware packages to improve out-of-box hardware support.
-- Defer an installer until its behavior, especially Windows dual-boot
-  handling, can be tested explicitly.
+- Use Debian's Calamares package and settings as the installer base; keep the
+  installer marked experimental until destructive partitioning and
+  post-install boot paths have been tested in virtual machines and on hardware.
 
 ## ISO parts and releases
 
